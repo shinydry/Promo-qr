@@ -806,80 +806,80 @@ const CATEGORY_CLASS = {
 };
 
 // ── DEMO QR IMAGES (embedded as data URIs for offline use) ──
-const DEMO_QRS = {"new_member_1month": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAewAAAHsAQAAAAA4UaPNAAADD0lEQVR4nO2dXY7cIBCEq6K84xvs/Y+1N2hO0HloaMCzURSN41kyxYPlHz71WsKoqO5h6Xii1R/P0IBw4cKFCxcuXLhw4cIvwJntAEkAqASQl3nMbhdGFy78BXjxaHE+RnUligNwA4+124XRhQt/BZ7j3D/pBndHpbu7AQBKO5km+SujCxd+F/7z8RYBFmcxFifgAIsRQLGrowsX/i1wN7g1Pd9me0MonBuiCxf+j/Exz5/GtNcDAKajf9Ft63cX/p54H/OVeWsWNuu5zd2uiC5c+P14G/Nn4VLpgANe6ZX59EHfbP3uwt8TR/MeuyGZR5R2sz2KPsWb2g/T0rZ+d+HviU++TTHmQrUYclYPPVMPR5v/Q+pcEV248NfhlZl4Rc9A8UAY9enMx33/5Bl/Mrpw4ffhyzyf0zgAj6+gy5tYzCL9nGuiCxd+P970fJQTtKNhSHf3kO6tsyE7SM8L3xNf8rA8mfCRhw3fphgnkd91/9bvLvw98XPtwfDfF8fevD8l4EU1ZsK3x0k2iWPdq0x/EkBlW7oWbwWWl0YXLvx+fK6Z5IeHY5NOTn4FAPjhj/iT0YULvxFv2qZ7NcdD1U13cipD3qPSK3uN5dbvLvw98an2oB4IPR/jeSSeEJcIA7MYtYYVvjE+ag9SzGceyqcGNH8yPUx5lcL3xHP0ToPfgMmEB6YPIXKyxeXPC98Wn2rM5jxUPjUAGMVmRWNe+O74ImCGOQlkEnaWPei5Wo154dvjlSRRGfVj7h41Zu3RMWrP8nhldOHC78PXNWyvupkVzpjwo2kNK3xv/KxtUrqMDrbomQXRmBe+Lb5sUFb6zjb5CWSitj+9Nrpw4S/Ay8MIn35CkoM87g+p/03+eOHC/6Ytdk1ZUk6YhM1Yt5ZJ3kjbCP8v8JjDm4zpJ22zSmvVlZrnhW+Lf7F3H/pWNo6+mK2M8rPU8aq3Eb4t/sU+Zg4wyinjOn4w0kvOogKTqqsUviuOeekKTGUGWBKvc0FOLnil54VviNP/3Of3Tf9DTbhw4cKFCxcuXLjwV+K/ABc6bHXfCuvBAAAAAElFTkSuQmCC", "winback_30day": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAewAAAHsAQAAAAA4UaPNAAAC8ElEQVR4nO2dYY7jIAyFn1fz37nB3v9YvQGcwPMDMCbNSjNqJlNvHhq1JOETRXJd8zCMGF4o9c8rNECcOHHixIkTJ06cOPETcPGyQTagCqq0Sr/z1OzE3okTvxD/6O9a2rv0yz61FTWpMue5u2a5x0787njw3tOxW4GZoYrfjM3e58MTJ/7l8vF8y6qgCtSkCrSIFlET4EjVTD124vfED2y+W3gVqxsAa/Uf6Z048evxafNu1c3am+UDQN0McD+/Gn/qsRO/Jz5svorfErVu8FrEL7WIltjsjN6JE78e7zYfvbc1w65iw8LnT8DJvRMnfj0OMzMzqFkZt5pQqdYq/alZ13DGUzOzknrsxO+Jd5vvBh9su91ZXtu3w5vR5omnxIMltzJ8u5UuznuDpSX9PPHsuI4A5iG+CAVANogIRoQvIssX5E0+PHHi3yiLbhPFyVaiSu+SjTH3gHhiPMxhw2ucqPZKC3VCtMPYhnhOfNVtdJmiYsxeMdQbb0abJ54WX3Qbd+aIRr7TKhGCf9o88Xy45xKP5GFA1FA31A1hTUrG03Y5Av7UYyd+b7z2DOHm5L1uj75DpP8WqEGNe0aIZ8an6u5rrHOJytsUIIj2jG2IZ8b3+TatIoC5Ylk3qIkWjDRjMLYhnhgPK606/+bEVlf1ZsiV9PPE0+L7HLMY1bhWM8X5MhHaPPGc+GLzy+JU2cuYwFycop8nnhafNu9hTAxp4uVcpZ2qfuqxE78nHnSb6OcRnPkuu56xDfHc+Jo/86RbAphpCfTzxP8H/Ch/Pmg1M6+sYAo7tHniifGjc8xaysGQ4mXNIl63gaceO/G748sBZWpte8jMOkDfM7LG9u/y4YkTfxG3x3DmarKNYL6MDJy/xnwb4mnxo7P7WjCjZZxm1rdKtSJ+GMgJvRMnfj1+cI4ZAN8P2GasooYqu4ziM3onTvx6/OgcMz+jMrh3hMPNzuudOPHr8X8dvvq1wv+hRpw4ceLEiRMnTpz4b+KfYjirwHHTnGIAAAAASUVORK5CYII=", "fundraiser_ffa": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAewAAAHsAQAAAAA4UaPNAAADCElEQVR4nO2dW26lMBBEq0f5Nztg/8vKDuwV1Hx0+0WuRnkwDB7KipANHNlIvq2i3DhG/KCUXz+hAeHChQsXLly4cOHChZ+AWytbbXplg5mhmJl9vO0mgxcu/Dt4ohcAKAaAOSpItJ1IPN52Yu/ChV+Hv7WaAUjZKyybpWyJBrAYixGwetVvO6N34cKvx99en/bZDhCwRG/+hd6FC78HnogSGt7MmOFH5kt6Fy78Kpxkn9WJJJHoqt7r/t463XabwQsX/mW8RnVv2YbwbXbaztY83HaXwQsX/oUSev6QgcDxTDH/44fb/vXghQv/Pu4+vBvvLl08mPPdmIEUXuVszp/Wu3DhF+IIwz2DuWr1FIp98OHjqleAatTnpZ9d+DNxjGtMLyptqjPeaj3g11/K0s8u/Ok4SfckAaBYm+1hV25xEsWah3OfwQsX/vnSA7jrljTF85ZsEGqnHhXnhS+Ldz3v87ytPYXIZz85Sn3peeHL4uFVWqIVA2Ceb1MvNyPe0uRT1sbSzy78mfjwDnuQN+1qhl/t8qYLnqWfXfgz8aptBnkD4OhYpm7j9LQEzXnhS+JV26DG+dYEkGgpN3nDsnlqsXKJha+MT/78aNegmfOjgZMhf1744vikbcacyX6mqv0pl1jaRviqePfnmxsJDMK+evUHf15zXviyeI/kLeWmyZhxBQoYDHy9wwpfGJ8SaUYZ04N/W5wa/BzpeeH/Ad6+AYziS1Q7Y/eDYqF23q1/QnKbwQsX/ukyfQPO2PTA2BZei9G/AW8LtdOC7NLPLvyZ+PE7KZ/t5p+Bt809vNSmpWxh0S/97MKfiQ9rUl5Sjg1tamCPn0ME+ewt5dsIXx6vKTRwDe9p8zV/PiR929ysaO8+4eviU/78lDY/eJJj1hnkzwtfG3+1j5nn2CSibHR5E8eNNdn4pN6FC78NXtWL7Ryd+RA8PQ/hloMXLvxPpcf50boh8GJDmxrnz+tduPDr8TmvEhjTbHoGzpA/33cFkZ4XviRu+h9qwoULFy5cuHDhwoUvi/8GDAmZ3U9W+toAAAAASUVORK5CYII=", "military_discount": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAewAAAHsAQAAAAA4UaPNAAADHUlEQVR4nO2dWY4bMQxEq4L8q2/g+x/LN5BOwHyQ2rwgiN1uj9KljxnB1oNaAMEpLq2h4Y1Rfr1DA8KFCxcuXLhw4cKFC98BZxsbAPhPn5BEIcn7ZT/k4YULfwVP5gMAClEYEwDJeKlfjct23F248G/go5O3DG7gxQDYlXYlt3D+g5Pfc3fhwo/Cfz/+OBkAAwxgMiSj+/yddxcu/Hj8ic0DKJv/NoCAle1RJn/psws/O25mlgEAyULYJLMMFJqZe/5p2a67Cxd+NF4iH3PzNS/Gi7mY53a/7Gc8vHDh/zBC29zqllG9exqn8MGytc8u/Jw4IvdYpUtkI3OdZ1gGkvnn0xozy0ufXfg58ernCw1ADVRb0EqA4wLAygaAKe+xu3Dhx+Nh83QzThYWXj/sll+zl0zGav/ffnjhwt/CvQ7lOsejVBczJO0a8t7D2E/sLlz4UThaL0FId4SMD4Wfutq3jLayyv6lzy78nHjT8xuTsVagmAyFIWxSturbmfKculn67MLPifc6rBVa2Qig0Apd27utE0AErVGflZ4XviyOmnasZdamcKqYidRl6guUqxS+Mj5ZdZfuvVsYU+PBsEw2L3xNfIphUdtpIlxNQ62qLci9RCWbF74gPmmbcOO5V2C7k2912PqHQDYvfE186D3o3rvnJLvUb30IPuTnha+KDz1mhdEqX3OSkbTxeWFX9bW1/tsPL1z4K6P5+bEyNWVvLBrpbyfy88KXxCebD7NvCr+p+lntQHpe+MJ4r0lNLwDWwpO3lvXGs2Towub93YULPx7H6NJbJNs1DObsDYaClPy88CVx2N1oycnRzvtrI1OGZ+mzCz8n3vvnY6RsLnK866a11hSivyqifhvh6+J3MWwayq9Dy0HvOvAhPy98fbxfUFav7Bu7a3ixdmul7voQ/v/hdo27DvzWvpjfBLMf21248E/iT+/uq0XYofbqL5UMBdlvP7xw4S+M4Z2RNqkZeA4vg0dmPuX51qelzy78nPjQReajBrDRbJanpOVYllUMK3xNnPb3Nc+H/oeacOHChQsXLly4cOHfxP8ApZqZ39ljxIQAAAAASUVORK5CYII=", "first_wash_free": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAewAAAHsAQAAAAA4UaPNAAADAUlEQVR4nO2dUW7jMAxEh4v+0zfo/Y/VG0gnmP2gRMluFgu02WTZjFAEsq0HRwDN0ENKNeIbrf/6Dg0IFy5cuHDhwoULFy78DrhlO+ZhdA6YGbqZ2edh/8mXFy78K7gzGgB0g5MN6BaX7H1e2ofd8e7ChT8Of8ueAfAGwJwWZ5wGsBu7EbC4Oofd4+7ChT8ef7txrhu7wRsBAuZEGP/97y5c+OPxWzYPwGkR2ITZA+zHP7i7cOHPxEmyAQCc6EYyo/rox3vrGnbXuwsX/ih8+vnp1aOZ0zK2d5q3OLwMe/aXFy78C23Y/CVW527b3eKPN0L60nMX/po4hvbo05x3NdLJBjbAGecvY9hKz134a+JICw/zZtvOLB1+nI9OPgKyeeEFcUyPjeHthzHPq9PUh8+fvwjy88LL4qfYJp18PgVh/OHbh4eH/Lzw0vgycmC59L2/R/srCpKfF14V3/z85urz7fVGn8Phy+aF18SXVhn6pEVdzdQqbX6aE5GK7QeWaFl67sJfEx82b97CvNmPIc57yxqbvfBANWbCi+NLtwFw0mS4xfAZz7d1RrGN8Jr4VY3fBckM8sfINj+l2wgvjC+bT4kmlcmL/efbKyDdRnhdfL7D9mPUDANRLZ8FN8vR94MYZWaj5Kz23IULB9tYALvSr4AdYAM/cg0sVEssvDI+dZvp2JkqTT8wPb/NqD4P569A6bkLf038lJPaZRlgi+rbOQOrPKzwwvi5lti3YpuGzw/CrmrK5oXXxNd62Hw/ZT/Wou+5VMSwFkltKarScxf+mvhWSJmpKF/Ryxjkq8x478vPCy+Ir3fY0bzFbjbAubTmJFGq3kZ4XXzF89fAfpMrMxu1e375eeHV8W0XyunVj2HbZmbvzF0rpc8L/3n48OofFqmoyEllKYK9a79K4XXx2/uYrSSUExnt5/aViueFF8bPWmV2ukUFzqqfj9KyXFRyn7sLF/54/KxJYstD+SkztcY3rYcVXho3/n3Mn5v+h5pw4cKFCxcuXLhw4c/EfwOiw8TCllUPrAAAAABJRU5ErkJggg==", "manager_comp": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAewAAAHsAQAAAAA4UaPNAAADAUlEQVR4nO2dXY4jIQyEy6t5hxvs/Y+VG8AJah+M+enpXWUnUToohaIEEJ+gJbdVbUzHiAdK/fUIDQgXLly4cOHChQsXLvwJuPWSgWr+8bplWMbJsOfNLlz4C/Gv9puK/xpgiQYgEb0OmA+Yhj1jduHCr8Qn7w0A3b3zZryZ93wb9i6LFy787vJ10let+fNqCFfPaicj97524Z+Jn9g8a0ZXL9U8gH9q8VcvXrjwh3CSLNGoRhIAC1CNBd48DnubxQsXfn8h2e0ZABL/9ZmGkWTZ+tqFfybetM2SgVCt9biGn5T8t0SFra9d+EfjIwKfgUQWmBkSebOuZHiLiL3ZAX9wduHCX4gftU2X8W7q7ds7+0gXNtI2wnfGWWITygyJ9nu5C9z5t3bipHbeYvHChf9P6fuw7DLeqrEap6BlvwEMi7y/evHChf8cb7uriZZBrn6+xHe1rmqeO7tw4S/EEdK8RSObkvdK9HtMvqt6QLFK4fviYfMFCJfuleHMUxh5ie9BbX3twj8TX/y8O/lxF6Tm5IerLwBGv2xe+Ib4sPChcCaH7wN60Ka5esrmhe+Lt7hNZJRlRpSG3plKD9OwZvPwTmTRX7144cJ/UKbcg5oRJ0RaE5GH4PHJxJ5m+aTZhQt/Pb5ImqXZRfsc0pkebKVthO+JT8+wwBDziSMyGXXMsXrZvPBd8TWLZgrOI1Lle8RmhDR7kc0L3xePILzlEZBsyZaTmG+aR/k2wjfGjyHKg2+ft6LmEL38vPBt8aFthpGH2c/PsOPpVXpe+N74JM45LByYkoeBOYyzhHRk88L3w9c9KQCpMJKKPZe4bVG1934UHxX3w9bXLvyz8S5joukHAP2QYD852DKK9QwrfGMcRz2z7kMtzY4U6Xnh++Jn7zHzs1E96yAVr7Bm1jxn4Fy9eOHCf1BO392XkQoSrZ0QjPj882cXLvz1+HoYaqoMATOXAkDvPRC+Nf7X95jNO1CLmOdItpfNC98Qt1PJcm/Rf6gJFy5cuHDhwoULF34l/gcr+9L3T2ikGAAAAABJRU5ErkJggg=="};
+const DEMO_QRS = {"gift_card": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAAB8ElEQVR4nO2cYYqEMAyFX5b9H2+w9z/W3KA5QfZHUlt1YHAUR51XBgktH0YISZs+Rhwrh/2sJQAiRIgQIUKECBEiLxAZxwARgYkMiGe/dLxjRO6DqMcIG+peAPX50vGOEbkR0mUqpGGyXLrEtxA5E/K7nHITN4EWqMs+byHyzciTGIu48mrs8RYi34y0GPPOEEC0uA2zpQMdI3I7xPLsiNiMqQOQP58tfcAxIpdHMo/1mSrt2JXNk9hhjhG5DYLsS0Szop8s7TlpYpTTfguRcyIZY2OAZUSpT+z6Y4wRWY/M9/yixbN9McCGnDdxk1o0T/stRM6JtFoJIOtj7eqPz1ZPmceIvIv4QyKiuvMjYAJ1WL2+/IRjRK6PZK0UQAAH3IZmqMd8NPxZK4lsqpW1ULYLce75ieyDoN9rRXSNATaxx8EYI7JutHOlAB4bsHbGzDtxAaDlWMeI3AaZ5qiububQphxjHiOyBVmIXTE2ZmPGC6iDJbKpVtZSmJ0LddEi/XFSqYMlshVpSUw9xPzZGYuOmVHPT2Q/JOQWo7YfwKjz+axjRC6JPNNaAwBES9pRRo36MSLvIU90sLDBa3TFFXmLt+McI3I7pNfB/tX9GOAPgYk/qj72eMeIXB6Rhcz11eB/qhAhQoQIESJEiOyJ/ANVKUIpQ+wjtwAAAABJRU5ErkJggg==", "instaclub": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAAB9klEQVR4nO2cUW7DMAiG/3/aO77B7n+s3sA+AXvAdpym2tR2Wkn181A1Jp9qJASGkNJxp7SPewlAiBAhQoQIESJEyC8IpxSwgOS8Y1X9/8aEvA9iHgLAL3T38CiWneoFGxPyRsgSqUASjWg8qk5hi5BMyOdxieZoxQEedQ/+ihAhe2lEhDK72Tw7lS1CXo9scWzzJ6sEvBU0+pXq/zYm5O2Q1mvHfmnOL4c5y0GV3xYhuZAex66Soo/Tvh9UiW0RkhNB70tY/wQAc5h7vb6tNzFqWluE5ES6j20u5O4VXpf1uG2uyMeE3CnTwbYqcoljuxCnOCbkybpyVJHcVkr/vtSYiW0RkhPBTIhesYtmoYq8WXUeE/IwMuKYVcxQZhUAWqFVmnN4neKYkD8489exuj4id19XFMeEPIz4hRiHfAAx5OPuaIykqdkeIc/kynnOZ+TERl/nLnad2LS2CMmJbLnyqlHWU6ctLTLlSiHP1ZVdbNSY83IUm/IxIU8h+0M+S29ZIPwtpn3KKzYm5I2QOewak2MxZR1DF/vHlyewRUhyZPZdSfYys63zimeyRUhqxHq/YvO3mmNjQk6G3JyDdQC0Gp2L2bhg9P/z2iIkN7IMu8b7ldGSxagxl9ozvS1CciG8+VrIT6L/VBEiRIgQIUKECPlL5BvM3V6xzEj8mQAAAABJRU5ErkJggg==", "free_wash_month": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAAB7UlEQVR4nO2bXY6DMAyEx6t9T27Q+x+rN4hPMPuQf4q0glaU0omqKhA+4Ugj4wzBiI3Nf7YSgBAhQoQIESJEiJB/EGstAsD0Pw+dfy5CTooE5gbAzHg3uDEth94QmJALIS1TZWnZjXBbDL0lMCEfjvyunjWAbgy0kF5xFyHfjKxozAB6tFfeRcg3I11jrd6iRwQCsIehAwMTcjnEy9oRgN1oERaRlTYOvSEwIR+PlDw2Ziq60Y25s0xihwUm5GpITlwlfdVDBHajzJXHhOxDUMyvVPsJABDIBKZijs1XnnYuQs6JdI0ttFSKsSa8wGLGSmNCNrbZwy8GbOkE5g7HJo0J2dj6szLM+YrMo+VMgvKYkGf9MTcAeSFpbTnpMS8zDw9MyGWQqfpq2axVaL3yT6r5hexDljX/+JQcBaaaX8heZF5F1tIrn+lrgVqhSWNCtiPzmrHqrdhlqfpjqvmF7EeW3kUTWM5p5Yee2aQxITuRwa/Ih+3lUc5g2qMoZC/SvQsDEFLpuBEwt640va8UshNZ2aNIj/RYDkKywTo7MDAhV0bKzjG35l0AIKnvkoQ86/O3jkd4ZK72PdINgYPRf9q5CDknUjU2vC0ywOrXIjaWZ4cGJuQyyNo+2If/+ZrTzkWIECFChAgRIuQTkT9sGo+HrOzzfgAAAABJRU5ErkJggg==", "competitors": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAAB90lEQVR4nO2cUY7DMAhEZ1b7T27Q+9/OPgH7AY6TKtKq3Sol3clH1Np5CkgI7DEtHQ9e/etRAhAiRIgQIUKECBHyC8L1WsbXBejkcj9V3xchRRHzuACgE+beMO/r1PmGCfkgZCaxZWSwBbu09ibDhFwc+T4c9c39FW8R8p+RoxizBoAAjsOsrC9CaiIzxmY4dQLwvgCgNdxHWllfhNRGeu4dAcAc5rw5zO+nzjdMyOWRzGO7TNUZd+/0g3JZ1hchNRGkLmEjlGzIFOYxux13d29lfRFSHomgaiA5Py9ZOt9pmJBrIxjpyTODmXubg5HHvG2eVB4T8hRCMnTXCKedBmt+iJxjmJDrI/s1f2eKY1Er94+GjlHYFyE1kYwxWqO1SFk0550GG+OnGibkE5G+ba7IokkydwFd+piQ55CNdmFjwd+wLvXds/UCWvMLeRLZnCV1AuBYjMEaZ32Eaz0m5ElkJ1PMPrFQXNtOklUeE/JH7WJtdnX30C5yajlGzjFMyPWRUSuzDkatbMji6DzoJSvri5DqyNxUdqaw33KzCXP18wt5MRJBRSJ2l22r9l/NFyEFkXEgvjaShUr2fsOEXBI56IP1zhAusnlsHDCNB8r6IqQ2sml25S3FipT34xdwc4NZ3hchtRDqP1WECBEiRIgQIULeivwADYINBXHW0/0AAAAASUVORK5CYII=", "julies": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAACGUlEQVR4nO2cXY7bMAyEh8W+UzfY+x9rbyCdYPog6sdNgEWa1qGzowcblvHBJCCMSIqJEQ+O9utRAhAiRIgQIUKECBHyDWJzFKAZEFcrx1enGybk+shH3L32ux2vvHmV2Bch2ZGlVB65Jsk+s4nYCwwT8oZIM1awwsxY/9tXhPwU5OPurPWd0auNjfK5rwj5ychaY7MY28Mw2yaPddq0vgjJjbTIHQHAaSWisp5mrlfnGybk8kjo2K5UbMZmc/7msCmtL0JSI1EWa2YFVmCfBMAv65MvNEzI9ZGhY816DMZm8GrjcY1WhqCl9UVITiTWmDn3UB+AeZ2P5tV87plpfRGSEwFJkgB6TYxkr4nFJLdwzEmSNa0vQnIi6yzJnF3NIqMcOhaLrJVzDRPyNkjoWGhXBck4S3KGslXAGSImHRPy8FjxGFqBs8sXvM5j8RA3YNT80/oiJCey5ZVOtNITTABo1pdcf3u6YULeBlkxf4wI7HE4DZ+7p/ZKIQ+PO3X+CPtH5I8/CmV5fRGSGtmbXUPBxv4YRwCqjwl5EhlpIwD75N5uHXll05m4kL9DVm9PbxjDiPCjXDYX28g0E/siJCdyp0fRALaCZgQ4jylnvpnXFyGXQWaaeWjmd+p3SUKeRGa1f4Ze/IqWRYz19hLDhFwcGXvlVmU99GA40WwVZs8zTMjbIHbT5vrd0H+qCBEiRIgQIUKE/EvkN6EA599PUwqnAAAAAElFTkSuQmCC", "woodhouse": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAACAElEQVR4nO2cXY7CMAyExyve3Rvs/Y/FDZITzD7E+SlFQsBum7ITIQpNP9WWrLGTGox4cuSvZwlAiBAhQoQIESJEyAPE2lhgC5ANALLZspra3zAh50cucfRUjgYQgNP6e5/a0TAhH4g0pQopc4aaDVOHGCbk5Mhle4qoubIq2Nt3ESJkPbIB4NWajv3JXYT8F6TrWNuMNad5MifycjO1o2FCPgapMXZPskqwbaam9UXInEjE2KhUpR5rVdnmYdO0vgiZGom1JGBmAEgiG5xMEWntgvl9ETIpkq0U+SW6+k5FNngoGdMRhgk5PVJzZV5i09VTlF/OkjHLrixL9tzPMCEfg4AkSQBMIFnFqn4l4YSzjzStL0LmRNBiZ3XWI+qiJHO2kFOMCXkRqXVXiSgARb76w/Fv3iL7GCbk9MiQK2tm7LLmQ6KUjgl5EVnlyqjHan6MC1K8arBN64uQOZFVzd/jiqsww7AEUIwJeQ2JLJmwLf5jaXmQYULOj3Qdi7GVMo80qlwp5C1kKPVDzdYrTTPTPr+QN5Gx2TU+Z0O2eIKZDjNMyAcidcsiKrQEXm0oyU7li5DjkTu91lZarFszv9PKD0ai9XpaX4TMjrSHldHP04qxMqRjQl5E7vTBhmRlg6fWfTFcMK0vQuZEbNPm+mjoP1WECBEiRIgQIUJ+E/kB2ztD/xjlf9EAAAAASUVORK5CYII="};
 
 // ── DEFAULT PROMO DATA ──
 const DEFAULT_PROMOS = [
   {
     id: 'p1',
-    name: 'New Member — First Month Free',
-    category: 'New Member',
-    desc: 'For customers signing up for their first membership today.',
-    qualifies: 'Any new customer who has never held a Tommy\'s Express membership. Must sign up in person at the wash.',
-    when: 'Use at the kiosk or terminal when a customer is ready to purchase their first membership plan.',
-    notes: 'Cannot be combined with any other offer. One per customer. Manager must approve if customer has had a membership at another location.',
-    expiry: '2026-12-31',
-    qr: DEMO_QRS['new_member_1month'],
+    name: 'Gift Card First Wash Free',
+    category: 'Promotion',
+    desc: 'Send guest through on the gift card wash value — direct to vacuums after for app setup help.',
+    qualifies: 'Any guest who has purchased a gift card.',
+    when: '1. Select the wash package matching the gift card value purchased.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.\n5. After wash, direct guest to the vacuum area so the greeter can help them add the gift card to their account or app.',
+    notes: 'Select only the wash package matching the gift card value purchased. Do not use for any other wash package.',
+    expiry: '',
+    qr: DEMO_QRS['gift_card'],
     active: true
   },
   {
     id: 'p2',
-    name: 'Winback — 30 Days on Us',
-    category: 'Winback',
-    desc: 'For lapsed members who cancelled 60+ days ago.',
-    qualifies: 'Former members whose memberships have been cancelled for at least 60 days.',
-    when: 'Use when a former member returns and wants to restart their membership.',
-    notes: 'Cannot be used for members who cancelled less than 60 days ago. Verify in the system before applying. Do not use for current or recently cancelled accounts.',
-    expiry: '2026-09-30',
-    qr: DEMO_QRS['winback_30day'],
+    name: 'Instaclub 2.0 — First Month Included with Works Purchase',
+    category: 'New Member',
+    desc: 'Discounts the first month of Works Club to the price of a single Works wash.',
+    qualifies: 'New members only.',
+    when: '1. Select the Works Club.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.',
+    notes: 'For new members only. If the phone number given is already in the system, this deal is not available. Do not ask for a different number.',
+    expiry: '',
+    qr: DEMO_QRS['instaclub'],
     active: true
   },
   {
     id: 'p3',
-    name: 'FFA Fundraiser — $5 Wash',
-    category: 'Fundraiser',
-    desc: 'Community fundraiser supporting local FFA chapter.',
-    qualifies: 'Any customer presenting a physical or digital FFA fundraiser voucher.',
-    when: 'Scan when the customer presents their voucher at the pay station.',
-    notes: 'Valid only on dates listed on the voucher. Do not accept vouchers without an event date printed on them.',
-    expiry: '2026-08-15',
-    qr: DEMO_QRS['fundraiser_ffa'],
+    name: 'Free Wash Free Month',
+    category: 'New Member',
+    desc: 'Free first month for a new member presenting a free wash coupon.',
+    qualifies: 'New members with a free wash coupon.',
+    when: '1. Select the Works Club.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.',
+    notes: 'For new members only. If the phone number given is already in the system, this deal is not available. Do not ask for a different number.',
+    expiry: '',
+    qr: DEMO_QRS['free_wash_month'],
     active: true
   },
   {
     id: 'p4',
-    name: 'Military & First Responder Discount',
-    category: 'Promotion',
-    desc: 'Ongoing discount for active military & first responders.',
-    qualifies: 'Active duty military, veterans with ID, law enforcement, firefighters, and EMTs with valid credentials.',
-    when: 'Apply when customer presents qualifying ID or badge. Available any time.',
-    notes: 'ID or badge must be presented each time. Cannot be stacked with membership promos. Retired military must show VA card.',
-    expiry: '2026-12-31',
-    qr: DEMO_QRS['military_discount'],
+    name: 'Competitors Coupons',
+    category: 'Manager Approval Only',
+    desc: 'Use when a guest brings a coupon for a competitor's car wash.',
+    qualifies: 'Any guest with a valid coupon for a free wash at another car wash.',
+    when: '1. Select the Works Wash.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.',
+    notes: 'Coupon must still be valid. Collect the coupon from the guest when redeeming.',
+    expiry: '',
+    qr: DEMO_QRS['competitors'],
     active: true
   },
   {
     id: 'p5',
-    name: 'First Wash Free',
-    category: 'New Member',
-    desc: 'One-time free wash for brand-new customers.',
-    qualifies: 'Brand-new customers visiting for the very first time — no membership required.',
-    when: 'Offer to first-time visitors who are not yet members and do not want to sign up today.',
-    notes: 'One per customer, one-time only. Cannot be used by existing or lapsed members.',
-    expiry: '2026-12-31',
-    qr: DEMO_QRS['first_wash_free'],
+    name: "Julie's Free Wash Code",
+    category: 'Manager Approval Only',
+    desc: 'Send guest through for a wash when picking up a donation or fundraising info.',
+    qualifies: 'Any guest identified by Julie to receive a free wash.',
+    when: '1. Select the Works Wash.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.',
+    notes: '',
+    expiry: '',
+    qr: DEMO_QRS['julies'],
     active: true
   },
   {
     id: 'p6',
-    name: 'Manager Comp Wash',
-    category: 'Manager Approval Only',
-    desc: 'Complimentary wash — manager approval required.',
-    qualifies: 'Any customer, at manager discretion only. Examples: service recovery, guest relations, community gift.',
-    when: 'Only use after receiving explicit approval from the manager on duty.',
-    notes: '⚠️ DO NOT use without manager approval. Track all comp washes in the log. Reason must be documented.',
-    expiry: '2026-12-31',
-    qr: DEMO_QRS['manager_comp'],
+    name: 'Woodhouse Free Wash',
+    category: 'Promotion',
+    desc: 'Free Works Wash for guests presenting a Woodhouse coupon.',
+    qualifies: 'Any guest with a valid Woodhouse coupon.',
+    when: '1. Select the Works Wash.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.\n5. Collect the coupon and place in the drawer.',
+    notes: 'Coupon must be present at time of redemption. Collect it from the guest and place in the drawer.',
+    expiry: '',
+    qr: DEMO_QRS['woodhouse'],
     active: true
   },
 ];
@@ -933,6 +933,7 @@ function showDetail(id) {
   document.getElementById('detailCategory').textContent = p.category;
   document.getElementById('detailTitle').textContent = p.name;
   document.getElementById('detailQualifies').textContent = p.qualifies || '—';
+  document.getElementById('detailWhen').style.whiteSpace = 'pre-line';
   document.getElementById('detailWhen').textContent = p.when || '—';
   document.getElementById('detailExpiry').textContent = formatExpiry(p.expiry);
 
