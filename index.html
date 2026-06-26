@@ -899,7 +899,7 @@ function loadPromos() {
 }
 
 function savePromos() {
-  localStorage.setItem('promoqr_promos', JSON.stringify(promos));
+  try { localStorage.setItem('promoqr_promos', JSON.stringify(promos)); } catch(e) {}
 }
 
 // ── VIEWS ──
@@ -1158,18 +1158,18 @@ function showToast(msg) {
 function checkInstall() {
   const isStandalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
   if (!isStandalone) {
-    const dismissed = localStorage.getItem('installBannerDismissed');
+    let dismissed = false; try { dismissed = localStorage.getItem('installBannerDismissed'); } catch(e) {}
     if (!dismissed) document.getElementById('installBanner').style.display = 'flex';
   }
   document.getElementById('installBanner').querySelector('button').addEventListener('click', () => {
-    localStorage.setItem('installBannerDismissed', '1');
+    try { localStorage.setItem('installBannerDismissed', '1'); } catch(e) {}
   });
 }
 
 // ── INIT ──
-loadPromos();
+try { loadPromos(); } catch(e) { promos = JSON.parse(JSON.stringify(DEFAULT_PROMOS)); }
 showHome();
-checkInstall();
+try { checkInstall(); } catch(e) {}
 </script>
 </body>
 </html>
