@@ -332,7 +332,9 @@ function showDetail(id) {
 
 function renderHome() {
   const active = promos.filter(p => p.active && !isExpired(p.expiry));
-  const cats = ['All', ...new Set(active.map(p => p.category))];
+  const CAT_ORDER = ['All', 'New Member', 'Winback', 'Fundraiser', 'Promotion', 'Manager Approval Only'];
+  const activeCats = new Set(active.map(p => p.category));
+  const cats = CAT_ORDER.filter(c => c === 'All' || activeCats.has(c));
   document.getElementById('activeBadge').textContent = active.length + ' Active';
   document.getElementById('filterBar').innerHTML = cats.map(c =>
     `<button class="filter-pill${c === activeFilter ? ' active' : ''}" onclick="setFilter('${c}')">${c}</button>`
