@@ -9,664 +9,169 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#CF202F">
 <title>Promo QR Codes</title>
-
 <style>
-  :root {
-    --red: #CF202F;
-    --red-dark: #A8192A;
-    --red-light: #F5E6E7;
-    --black: #111111;
-    --gray-900: #1a1a1a;
-    --gray-700: #444;
-    --gray-500: #777;
-    --gray-300: #ccc;
-    --gray-100: #f4f4f4;
-    --white: #ffffff;
-    --radius: 16px;
-    --shadow: 0 2px 12px rgba(0,0,0,0.10);
-    --shadow-lg: 0 8px 32px rgba(0,0,0,0.16);
-    --font: -apple-system, 'SF Pro Display', BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-  }
+:root {
+  --red: #CF202F;
+  --red-dark: #A8192A;
+  --red-light: #F5E6E7;
+  --black: #111;
+  --gray-700: #444;
+  --gray-500: #777;
+  --gray-300: #ccc;
+  --gray-100: #f4f4f4;
+  --white: #fff;
+  --radius: 16px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.10);
+  --font: -apple-system,'SF Pro Display',BlinkMacSystemFont,'Helvetica Neue',sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body { font-family: var(--font); background: var(--gray-100); color: var(--black); min-height: 100vh; overscroll-behavior: none; }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+/* HEADER */
+.app-header { background: var(--red); color: var(--white); padding: env(safe-area-inset-top,16px) 24px 20px; padding-top: calc(env(safe-area-inset-top,16px) + 16px); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+.header-inner { max-width: 900px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.app-title { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+.header-badge { font-size: 13px; background: rgba(255,255,255,0.22); border-radius: 20px; padding: 4px 12px; font-weight: 600; white-space: nowrap; }
+.admin-btn { background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.4); color: white; border-radius: 10px; padding: 8px 16px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: var(--font); transition: background 0.15s; }
+.admin-btn:active { background: rgba(255,255,255,0.3); }
 
-  html, body {
-    font-family: var(--font);
-    background: var(--gray-100);
-    color: var(--black);
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    overscroll-behavior: none;
-  }
+/* MAIN */
+.main-content { max-width: 900px; margin: 0 auto; padding: 24px 20px 48px; }
 
-  /* ── HEADER ── */
-  .app-header {
-    background: var(--red);
-    color: var(--white);
-    padding: env(safe-area-inset-top, 16px) 24px 20px;
-    padding-top: calc(env(safe-area-inset-top, 16px) + 16px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  }
+/* FILTER PILLS */
+.filter-bar { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 24px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.filter-bar::-webkit-scrollbar { display: none; }
+.filter-pill { flex-shrink: 0; background: var(--white); border: 2px solid var(--gray-300); color: var(--gray-700); border-radius: 40px; padding: 10px 20px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: var(--font); white-space: nowrap; transition: all 0.15s; }
+.filter-pill.active { background: var(--red); border-color: var(--red); color: white; }
 
-  .header-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
+/* GRID */
+.promo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; }
 
-  .app-title {
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-  }
+/* CARDS */
+.promo-card { background: var(--white); border-radius: var(--radius); padding: 22px 20px; cursor: pointer; box-shadow: var(--shadow); border: 2px solid transparent; transition: transform 0.12s, box-shadow 0.12s; user-select: none; position: relative; overflow: hidden; }
+.promo-card:active { transform: scale(0.97); border-color: var(--red); }
+.promo-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--red); border-radius: 4px 4px 0 0; }
+.promo-card.manager-only::before { background: #222; }
+.promo-card.fundraiser::before { background: #1a5fa8; }
+.promo-card.promotion::before { background: #2e7d32; }
+.promo-card.winback::before { background: #e65100; }
+.card-category { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--red); margin-bottom: 8px; }
+.promo-card.manager-only .card-category { color: #222; }
+.promo-card.fundraiser .card-category { color: #1a5fa8; }
+.promo-card.promotion .card-category { color: #2e7d32; }
+.promo-card.winback .card-category { color: #e65100; }
+.card-name { font-size: 20px; font-weight: 700; color: var(--black); margin-bottom: 8px; line-height: 1.2; }
+.card-desc { font-size: 15px; color: var(--gray-700); margin-bottom: 14px; line-height: 1.4; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.card-expiry { font-size: 13px; color: var(--gray-500); font-weight: 500; }
+.card-expiry.soon { color: #c55a00; font-weight: 700; }
+.card-arrow { width: 36px; height: 36px; background: var(--red-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--red); font-size: 18px; font-weight: 700; flex-shrink: 0; }
+.promo-card.manager-only .card-arrow { background: #eee; color: #222; }
+.promo-card.fundraiser .card-arrow { background: #e8f0fb; color: #1a5fa8; }
+.promo-card.promotion .card-arrow { background: #e8f5e9; color: #2e7d32; }
+.promo-card.winback .card-arrow { background: #fff3e0; color: #e65100; }
 
-  .header-badge {
-    font-size: 13px;
-    background: rgba(255,255,255,0.22);
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-weight: 600;
-    white-space: nowrap;
-  }
+/* DETAIL VIEW */
+.detail-view { display: none; flex-direction: column; min-height: 100vh; background: var(--gray-100); }
+.detail-view.active { display: flex; }
+.detail-header { background: var(--red); color: white; padding: env(safe-area-inset-top,16px) 24px 20px; padding-top: calc(env(safe-area-inset-top,16px) + 16px); }
+.detail-header.manager-only { background: #111; }
+.detail-header.fundraiser { background: #1a5fa8; }
+.detail-header.promotion { background: #2e7d32; }
+.detail-header.winback { background: #e65100; }
+.back-btn { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.4); color: white; border-radius: 10px; padding: 10px 18px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: var(--font); margin-bottom: 16px; }
+.back-btn:active { background: rgba(255,255,255,0.3); }
+.detail-category { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; margin-bottom: 6px; }
+.detail-title { font-size: 28px; font-weight: 700; line-height: 1.15; }
+.detail-body { padding: 24px 20px 48px; max-width: 700px; margin: 0 auto; width: 100%; flex: 1; }
+.qr-container { background: white; border-radius: var(--radius); padding: 28px 20px; box-shadow: var(--shadow); text-align: center; margin-bottom: 20px; }
+.qr-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500); margin-bottom: 20px; }
+.qr-img { max-width: 300px; width: 100%; height: auto; border: 3px solid var(--black); border-radius: 8px; display: block; margin: 0 auto; }
+.qr-caption { margin-top: 16px; font-size: 14px; color: var(--gray-500); }
+.detail-info-card { background: white; border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); margin-bottom: 20px; }
+.info-row { margin-bottom: 18px; }
+.info-row:last-child { margin-bottom: 0; }
+.info-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500); margin-bottom: 4px; }
+.info-value { font-size: 17px; color: var(--black); line-height: 1.4; white-space: pre-line; }
+.info-value.warning { color: #c55a00; font-weight: 600; }
+.divider { height: 1px; background: var(--gray-100); margin: 14px 0; }
+.back-btn-bottom { background: var(--gray-700); border: none; border-radius: 10px; padding: 14px; width: 100%; color: white; font-size: 17px; font-weight: 600; cursor: pointer; font-family: var(--font); display: flex; align-items: center; justify-content: center; gap: 8px; }
 
-  /* ── ADMIN TOGGLE BUTTON ── */
-  .admin-btn {
-    background: rgba(255,255,255,0.18);
-    border: 1.5px solid rgba(255,255,255,0.4);
-    color: white;
-    border-radius: 10px;
-    padding: 8px 16px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: var(--font);
-    transition: background 0.15s;
-  }
-  .admin-btn:active { background: rgba(255,255,255,0.3); }
+/* ADMIN VIEW */
+.admin-view { display: none; }
+.admin-view.active { display: block; }
+.admin-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+.admin-section-title { font-size: 22px; font-weight: 700; }
+.add-btn { background: var(--red); color: white; border: none; border-radius: 10px; padding: 12px 22px; font-size: 16px; font-weight: 700; cursor: pointer; font-family: var(--font); }
+.add-btn:active { background: var(--red-dark); }
+.admin-table { background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 8px; }
+.admin-row { display: flex; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--gray-100); gap: 12px; }
+.admin-row:last-child { border-bottom: none; }
+.admin-row-info { flex: 1; min-width: 0; }
+.admin-row-name { font-size: 17px; font-weight: 700; color: var(--black); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.admin-row-meta { font-size: 13px; color: var(--gray-500); margin-top: 2px; }
+.status-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.status-dot.active { background: #2e7d32; }
+.status-dot.inactive { background: var(--gray-300); }
+.admin-actions { display: flex; gap: 8px; }
+.btn-sm { border: 1.5px solid var(--gray-300); background: white; border-radius: 8px; padding: 7px 14px; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--gray-700); font-family: var(--font); }
+.btn-sm.danger { color: var(--red); border-color: var(--red-light); }
+.btn-sm.primary { color: #1a5fa8; border-color: #d0e0f7; }
+.section-sep { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500); margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--gray-300); }
 
-  /* ── MAIN CONTENT ── */
-  .main-content {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 24px 20px 48px;
-  }
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 500; align-items: flex-end; justify-content: center; }
+.modal-overlay.active { display: flex; }
+.modal { background: white; border-radius: 20px 20px 0 0; width: 100%; max-width: 700px; max-height: 90vh; overflow-y: auto; padding: 24px 24px 40px; -webkit-overflow-scrolling: touch; }
+.modal-title { font-size: 22px; font-weight: 700; margin-bottom: 20px; color: var(--black); }
+.form-group { margin-bottom: 18px; }
+.form-label { display: block; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gray-500); margin-bottom: 6px; }
+.form-input, .form-select, .form-textarea { width: 100%; border: 2px solid var(--gray-300); border-radius: 10px; padding: 13px 14px; font-size: 16px; font-family: var(--font); color: var(--black); background: white; outline: none; -webkit-appearance: none; }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--red); }
+.form-textarea { resize: vertical; min-height: 80px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.modal-actions { display: flex; gap: 12px; margin-top: 24px; }
+.btn-cancel { flex: 1; background: var(--gray-100); border: none; border-radius: 10px; padding: 14px; font-size: 17px; font-weight: 600; color: var(--gray-700); cursor: pointer; font-family: var(--font); }
+.btn-save { flex: 2; background: var(--red); border: none; border-radius: 10px; padding: 14px; font-size: 17px; font-weight: 700; color: white; cursor: pointer; font-family: var(--font); }
+.btn-save:active { background: var(--red-dark); }
 
-  /* ── CATEGORY FILTER PILLS ── */
-  .filter-bar {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    margin-bottom: 24px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .filter-bar::-webkit-scrollbar { display: none; }
+/* TOAST */
+.toast { position: fixed; bottom: calc(env(safe-area-inset-bottom,0px) + 24px); left: 50%; transform: translateX(-50%) translateY(20px); background: #111; color: white; padding: 12px 24px; border-radius: 40px; font-size: 15px; font-weight: 600; opacity: 0; transition: all 0.25s; pointer-events: none; z-index: 1000; white-space: nowrap; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  .filter-pill {
-    flex-shrink: 0;
-    background: var(--white);
-    border: 2px solid var(--gray-300);
-    color: var(--gray-700);
-    border-radius: 40px;
-    padding: 10px 20px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s;
-    font-family: var(--font);
-    white-space: nowrap;
-  }
-  .filter-pill.active {
-    background: var(--red);
-    border-color: var(--red);
-    color: white;
-  }
+/* INSTALL BANNER */
+.install-banner { background: #111; color: white; padding: 14px 20px; text-align: center; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.install-banner button { background: none; border: none; color: white; font-size: 18px; cursor: pointer; padding: 0 4px; flex-shrink: 0; }
 
-  /* ── PROMO GRID ── */
-  .promo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-  }
-
-  /* ── PROMO CARD ── */
-  .promo-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 22px 20px;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    border: 2px solid transparent;
-    transition: transform 0.12s, box-shadow 0.12s, border-color 0.12s;
-    user-select: none;
-    position: relative;
-    overflow: hidden;
-  }
-  .promo-card:active {
-    transform: scale(0.97);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--red);
-  }
-
-  .promo-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 4px;
-    background: var(--red);
-    border-radius: 4px 4px 0 0;
-  }
-
-  .promo-card.manager-only::before { background: #222; }
-  .promo-card.fundraiser::before { background: #1a5fa8; }
-  .promo-card.community::before { background: #2e7d32; }
-  .promo-card.winback::before { background: #e65100; }
-
-  .card-category {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--red);
-    margin-bottom: 8px;
-  }
-  .promo-card.manager-only .card-category { color: #222; }
-  .promo-card.fundraiser .card-category { color: #1a5fa8; }
-  .promo-card.community .card-category { color: #2e7d32; }
-  .promo-card.winback .card-category { color: #e65100; }
-
-  .card-name {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--black);
-    margin-bottom: 8px;
-    line-height: 1.2;
-  }
-
-  .card-desc {
-    font-size: 15px;
-    color: var(--gray-700);
-    margin-bottom: 14px;
-    line-height: 1.4;
-  }
-
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
-  .card-expiry {
-    font-size: 13px;
-    color: var(--gray-500);
-    font-weight: 500;
-  }
-  .card-expiry.soon { color: #c55a00; font-weight: 700; }
-  .card-expiry.expired { color: var(--red); }
-
-  .card-arrow {
-    width: 36px;
-    height: 36px;
-    background: var(--red-light);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--red);
-    font-size: 18px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .promo-card.manager-only .card-arrow { background: #eee; color: #222; }
-  .promo-card.fundraiser .card-arrow { background: #e8f0fb; color: #1a5fa8; }
-  .promo-card.community .card-arrow { background: #e8f5e9; color: #2e7d32; }
-  .promo-card.winback .card-arrow { background: #fff3e0; color: #e65100; }
-
-  /* ── EMPTY STATE ── */
-  .empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--gray-500);
-  }
-  .empty-state p { font-size: 18px; margin-top: 8px; }
-
-  /* ── DETAIL VIEW ── */
-  .detail-view {
-    display: none;
-    flex-direction: column;
-    min-height: 100vh;
-    background: var(--gray-100);
-  }
-  .detail-view.active { display: flex; }
-
-  .detail-header {
-    background: var(--red);
-    color: white;
-    padding: env(safe-area-inset-top, 16px) 24px 20px;
-    padding-top: calc(env(safe-area-inset-top, 16px) + 16px);
-  }
-
-  .back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(255,255,255,0.18);
-    border: 1.5px solid rgba(255,255,255,0.4);
-    color: white;
-    border-radius: 10px;
-    padding: 10px 18px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: var(--font);
-    margin-bottom: 16px;
-    transition: background 0.15s;
-  }
-  .back-btn:active { background: rgba(255,255,255,0.3); }
-
-  .detail-category {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.8;
-    margin-bottom: 6px;
-  }
-
-  .detail-title {
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1.15;
-  }
-
-  .detail-body {
-    padding: 24px 20px 48px;
-    max-width: 700px;
-    margin: 0 auto;
-    width: 100%;
-    flex: 1;
-  }
-
-  .detail-info-card {
-    background: white;
-    border-radius: var(--radius);
-    padding: 20px;
-    box-shadow: var(--shadow);
-    margin-bottom: 20px;
-  }
-
-  .info-row {
-    margin-bottom: 18px;
-  }
-  .info-row:last-child { margin-bottom: 0; }
-
-  .info-label {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--gray-500);
-    margin-bottom: 4px;
-  }
-
-  .info-value {
-    font-size: 17px;
-    color: var(--black);
-    line-height: 1.4;
-  }
-
-  .info-value.warning {
-    color: #c55a00;
-    font-weight: 600;
-  }
-
-  .divider {
-    height: 1px;
-    background: var(--gray-100);
-    margin: 14px 0;
-  }
-
-  .qr-container {
-    background: white;
-    border-radius: var(--radius);
-    padding: 28px 20px;
-    box-shadow: var(--shadow);
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .qr-label {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--gray-500);
-    margin-bottom: 20px;
-  }
-
-  .qr-img {
-    max-width: 300px;
-    width: 100%;
-    height: auto;
-    border: 3px solid var(--black);
-    border-radius: 8px;
-    display: block;
-    margin: 0 auto;
-  }
-
-  .qr-caption {
-    margin-top: 16px;
-    font-size: 14px;
-    color: var(--gray-500);
-  }
-
-  /* ── ADMIN VIEW ── */
-  .admin-view {
-    display: none;
-  }
-  .admin-view.active { display: block; }
-
-  .admin-header-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .admin-section-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--black);
-  }
-
-  .add-btn {
-    background: var(--red);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 12px 22px;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: var(--font);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: background 0.15s;
-  }
-  .add-btn:active { background: var(--red-dark); }
-
-  .admin-table {
-    background: white;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-  }
-
-  .admin-row {
-    display: flex;
-    align-items: center;
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--gray-100);
-    gap: 12px;
-  }
-  .admin-row:last-child { border-bottom: none; }
-
-  .admin-row-info { flex: 1; min-width: 0; }
-
-  .admin-row-name {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--black);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .admin-row-meta {
-    font-size: 13px;
-    color: var(--gray-500);
-    margin-top: 2px;
-  }
-
-  .status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .status-dot.active { background: #2e7d32; }
-  .status-dot.inactive { background: var(--gray-300); }
-
-  .admin-actions { display: flex; gap: 8px; }
-
-  .btn-sm {
-    border: 1.5px solid var(--gray-300);
-    background: white;
-    border-radius: 8px;
-    padding: 7px 14px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    color: var(--gray-700);
-    font-family: var(--font);
-    transition: all 0.12s;
-  }
-  .btn-sm:active { background: var(--gray-100); }
-  .btn-sm.danger { color: var(--red); border-color: var(--red-light); }
-  .btn-sm.primary { color: var(--red); border-color: var(--red); }
-
-  /* ── MODAL ── */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 500;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 0;
-  }
-  .modal-overlay.active { display: flex; }
-
-  .modal {
-    background: white;
-    border-radius: 20px 20px 0 0;
-    width: 100%;
-    max-width: 700px;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 24px 24px calc(env(safe-area-inset-bottom, 0px) + 32px);
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .modal-title {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: var(--black);
-  }
-
-  .form-group { margin-bottom: 18px; }
-
-  .form-label {
-    display: block;
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--gray-500);
-    margin-bottom: 6px;
-  }
-
-  .form-input, .form-select, .form-textarea {
-    width: 100%;
-    border: 2px solid var(--gray-300);
-    border-radius: 10px;
-    padding: 13px 14px;
-    font-size: 16px;
-    font-family: var(--font);
-    color: var(--black);
-    background: white;
-    outline: none;
-    transition: border-color 0.15s;
-    -webkit-appearance: none;
-  }
-  .form-input:focus, .form-select:focus, .form-textarea:focus {
-    border-color: var(--red);
-  }
-  .form-textarea { resize: vertical; min-height: 80px; }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
-
-  .modal-actions {
-    display: flex;
-    gap: 12px;
-    margin-top: 24px;
-  }
-
-  .btn-cancel {
-    flex: 1;
-    background: var(--gray-100);
-    border: none;
-    border-radius: 10px;
-    padding: 14px;
-    font-size: 17px;
-    font-weight: 600;
-    color: var(--gray-700);
-    cursor: pointer;
-    font-family: var(--font);
-  }
-
-  .btn-save {
-    flex: 2;
-    background: var(--red);
-    border: none;
-    border-radius: 10px;
-    padding: 14px;
-    font-size: 17px;
-    font-weight: 700;
-    color: white;
-    cursor: pointer;
-    font-family: var(--font);
-    transition: background 0.15s;
-  }
-  .btn-save:active { background: var(--red-dark); }
-
-  /* ── TOAST ── */
-  .toast {
-    position: fixed;
-    bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: #111;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 40px;
-    font-size: 15px;
-    font-weight: 600;
-    opacity: 0;
-    transition: all 0.25s;
-    pointer-events: none;
-    z-index: 1000;
-    white-space: nowrap;
-  }
-  .toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-
-  /* ── INSTALL BANNER ── */
-  .install-banner {
-    background: #111;
-    color: white;
-    padding: 14px 20px;
-    text-align: center;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-  .install-banner button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 0 4px;
-    flex-shrink: 0;
-  }
-
-  /* ── SECTION SEPARATOR ── */
-  .section-sep {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--gray-500);
-    margin: 28px 0 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--gray-300);
-  }
-
-  @media (min-width: 700px) {
-    .promo-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (min-width: 960px) {
-    .promo-grid { grid-template-columns: repeat(3, 1fr); }
-  }
+@media (min-width: 700px) { .promo-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .promo-grid { grid-template-columns: repeat(3, 1fr); } }
 </style>
 </head>
 <body>
 
-<!-- Install Banner (shown on non-standalone) -->
 <div class="install-banner" id="installBanner" style="display:none">
   <span>📲 Add to Home Screen for the best experience — tap Share → Add to Home Screen</span>
   <button onclick="document.getElementById('installBanner').style.display='none'">✕</button>
 </div>
 
-<!-- ══════════════════════════════════════════════ -->
-<!-- HOME VIEW                                      -->
-<!-- ══════════════════════════════════════════════ -->
+<!-- HOME VIEW -->
 <div id="homeView">
   <header class="app-header">
     <div class="header-inner">
-      <div>
-        <div class="app-title">Promo QR Codes</div>
-      </div>
-      <div style="display:flex; gap:10px; align-items:center">
+      <div class="app-title">Promo QR Codes</div>
+      <div style="display:flex;gap:10px;align-items:center">
         <span class="header-badge" id="activeBadge">— Active</span>
         <button class="admin-btn" onclick="showAdmin()">⚙ Manage</button>
       </div>
     </div>
   </header>
-
   <div class="main-content" id="homeContent">
-    <!-- Filter pills injected here -->
     <div class="filter-bar" id="filterBar"></div>
-    <!-- Promo cards injected here -->
     <div class="promo-grid" id="promoGrid"></div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════ -->
-<!-- DETAIL VIEW                                    -->
-<!-- ══════════════════════════════════════════════ -->
+<!-- DETAIL VIEW -->
 <div class="detail-view" id="detailView">
   <div class="detail-header" id="detailHeader">
     <button class="back-btn" onclick="showHome()">← All Promos</button>
@@ -679,7 +184,6 @@
       <img class="qr-img" id="detailQR" src="" alt="QR Code">
       <div class="qr-caption" id="detailQRCaption"></div>
     </div>
-
     <div class="detail-info-card">
       <div class="info-row">
         <div class="info-label">Who qualifies</div>
@@ -701,14 +205,11 @@
         <div class="info-value" id="detailExpiry"></div>
       </div>
     </div>
-
-    <button class="back-btn" style="background:var(--gray-700); border-color:transparent; font-size:17px; padding:14px 24px; width:100%; justify-content:center; display:flex" onclick="showHome()">← Back to All Promos</button>
+    <button class="back-btn-bottom" onclick="showHome()">← Back to All Promos</button>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════ -->
-<!-- ADMIN VIEW                                     -->
-<!-- ══════════════════════════════════════════════ -->
+<!-- ADMIN VIEW -->
 <div id="adminView" style="display:none">
   <header class="app-header">
     <div class="header-inner">
@@ -722,69 +223,27 @@
       <button class="add-btn" onclick="openModal()">＋ Add Promo</button>
     </div>
     <div class="admin-table" id="adminTable"></div>
-
-    <div class="section-sep" style="margin-top:40px">Inactive / Expired Promos</div>
+    <div class="section-sep">Inactive / Expired Promos</div>
     <div class="admin-table" id="adminTableInactive"></div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════ -->
-<!-- MODAL: Add / Edit Promo                        -->
-<!-- ══════════════════════════════════════════════ -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
   <div class="modal">
     <div class="modal-title" id="modalTitle">Add Promo</div>
-    <div class="form-group">
-      <label class="form-label">Promo Name *</label>
-      <input class="form-input" id="f_name" placeholder="e.g. New Member First Month Free">
-    </div>
+    <div class="form-group"><label class="form-label">Promo Name *</label><input class="form-input" id="f_name" placeholder="Promo name"></div>
     <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">Category *</label>
-        <select class="form-select" id="f_category">
-          <option value="New Member">New Member</option>
-          <option value="Winback">Winback</option>
-          <option value="Fundraiser">Fundraiser</option>
-          <option value="Promotion">Promotion</option>
-          <option value="Manager Approval Only">Manager Approval Only</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Status</label>
-        <select class="form-select" id="f_active">
-          <option value="true">Active</option>
-          <option value="false">Inactive</option>
-        </select>
-      </div>
+      <div class="form-group"><label class="form-label">Category *</label><select class="form-select" id="f_category"><option>New Member</option><option>Winback</option><option>Fundraiser</option><option>Promotion</option><option>Manager Approval Only</option></select></div>
+      <div class="form-group"><label class="form-label">Status</label><select class="form-select" id="f_active"><option value="true">Active</option><option value="false">Inactive</option></select></div>
     </div>
-    <div class="form-group">
-      <label class="form-label">Short Description (card preview)</label>
-      <input class="form-input" id="f_desc" placeholder="e.g. For new members signing up today">
-    </div>
-    <div class="form-group">
-      <label class="form-label">Who Qualifies</label>
-      <textarea class="form-textarea" id="f_qualifies" placeholder="e.g. Any new member who has never had a Tommy's membership"></textarea>
-    </div>
-    <div class="form-group">
-      <label class="form-label">When to Use</label>
-      <textarea class="form-textarea" id="f_when" placeholder="e.g. Use at sign-up when the customer is new and ready to purchase"></textarea>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Restrictions / Notes</label>
-      <textarea class="form-textarea" id="f_notes" placeholder="e.g. Cannot be combined with other offers. One per customer."></textarea>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Expiration Date</label>
-      <input class="form-input" id="f_expiry" type="date">
-    </div>
-    <div class="form-group">
-      <label class="form-label">QR Code — Paste a URL (auto-generates QR) or upload an image</label>
-      <input class="form-input" id="f_qr_url" placeholder="https://...  (paste promo or sign-up link)">
-    </div>
-    <div class="form-group">
-      <label class="form-label">— or upload a QR code image</label>
-      <input type="file" accept="image/*" id="f_qr_file" style="font-size:15px; padding:8px 0">
-    </div>
+    <div class="form-group"><label class="form-label">Short Description</label><input class="form-input" id="f_desc" placeholder="Shown on the card"></div>
+    <div class="form-group"><label class="form-label">Who Qualifies</label><textarea class="form-textarea" id="f_qualifies"></textarea></div>
+    <div class="form-group"><label class="form-label">When to Use</label><textarea class="form-textarea" id="f_when"></textarea></div>
+    <div class="form-group"><label class="form-label">Restrictions / Notes</label><textarea class="form-textarea" id="f_notes"></textarea></div>
+    <div class="form-group"><label class="form-label">Expiration Date</label><input class="form-input" id="f_expiry" type="date"></div>
+    <div class="form-group"><label class="form-label">QR Code — Paste URL or POS code (auto-generates QR)</label><input class="form-input" id="f_qr_url" placeholder="https://... or POS code"></div>
+    <div class="form-group"><label class="form-label">— or upload a QR code image</label><input type="file" accept="image/*" id="f_qr_file" style="font-size:15px;padding:8px 0"></div>
     <div class="modal-actions">
       <button class="btn-cancel" onclick="closeModal()">Cancel</button>
       <button class="btn-save" onclick="savePromo()">Save Promo</button>
@@ -792,117 +251,44 @@
   </div>
 </div>
 
-<!-- Toast -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ── CATEGORY COLOR MAP ──
 const CATEGORY_CLASS = {
   'New Member': '',
   'Winback': 'winback',
   'Fundraiser': 'fundraiser',
-  'Promotion': 'community',
+  'Promotion': 'promotion',
   'Manager Approval Only': 'manager-only',
 };
 
-// ── DEMO QR IMAGES (embedded as data URIs for offline use) ──
-const DEMO_QRS = {"gift_card": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAAB8ElEQVR4nO2cYYqEMAyFX5b9H2+w9z/W3KA5QfZHUlt1YHAUR51XBgktH0YISZs+Rhwrh/2sJQAiRIgQIUKECBEiLxAZxwARgYkMiGe/dLxjRO6DqMcIG+peAPX50vGOEbkR0mUqpGGyXLrEtxA5E/K7nHITN4EWqMs+byHyzciTGIu48mrs8RYi34y0GPPOEEC0uA2zpQMdI3I7xPLsiNiMqQOQP58tfcAxIpdHMo/1mSrt2JXNk9hhjhG5DYLsS0Szop8s7TlpYpTTfguRcyIZY2OAZUSpT+z6Y4wRWY/M9/yixbN9McCGnDdxk1o0T/stRM6JtFoJIOtj7eqPz1ZPmceIvIv4QyKiuvMjYAJ1WL2+/IRjRK6PZK0UQAAH3IZmqMd8NPxZK4lsqpW1ULYLce75ieyDoN9rRXSNATaxx8EYI7JutHOlAB4bsHbGzDtxAaDlWMeI3AaZ5qiububQphxjHiOyBVmIXTE2ZmPGC6iDJbKpVtZSmJ0LddEi/XFSqYMlshVpSUw9xPzZGYuOmVHPT2Q/JOQWo7YfwKjz+axjRC6JPNNaAwBES9pRRo36MSLvIU90sLDBa3TFFXmLt+McI3I7pNfB/tX9GOAPgYk/qj72eMeIXB6Rhcz11eB/qhAhQoQIESJEiOyJ/ANVKUIpQ+wjtwAAAABJRU5ErkJggg==", "instaclub": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAAB9klEQVR4nO2cUW7DMAiG/3/aO77B7n+s3sA+AXvAdpym2tR2Wkn181A1Jp9qJASGkNJxp7SPewlAiBAhQoQIESJEyC8IpxSwgOS8Y1X9/8aEvA9iHgLAL3T38CiWneoFGxPyRsgSqUASjWg8qk5hi5BMyOdxieZoxQEedQ/+ihAhe2lEhDK72Tw7lS1CXo9scWzzJ6sEvBU0+pXq/zYm5O2Q1mvHfmnOL4c5y0GV3xYhuZAex66Soo/Tvh9UiW0RkhNB70tY/wQAc5h7vb6tNzFqWluE5ES6j20u5O4VXpf1uG2uyMeE3CnTwbYqcoljuxCnOCbkybpyVJHcVkr/vtSYiW0RkhPBTIhesYtmoYq8WXUeE/IwMuKYVcxQZhUAWqFVmnN4neKYkD8489exuj4id19XFMeEPIz4hRiHfAAx5OPuaIykqdkeIc/kynnOZ+TERl/nLnad2LS2CMmJbLnyqlHWU6ctLTLlSiHP1ZVdbNSY83IUm/IxIU8h+0M+S29ZIPwtpn3KKzYm5I2QOewak2MxZR1DF/vHlyewRUhyZPZdSfYys63zimeyRUhqxHq/YvO3mmNjQk6G3JyDdQC0Gp2L2bhg9P/z2iIkN7IMu8b7ldGSxagxl9ozvS1CciG8+VrIT6L/VBEiRIgQIUKECPlL5BvM3V6xzEj8mQAAAABJRU5ErkJggg==", "free_wash_month": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAAB7UlEQVR4nO2bXY6DMAyEx6t9T27Q+x+rN4hPMPuQf4q0glaU0omqKhA+4Ugj4wzBiI3Nf7YSgBAhQoQIESJEiJB/EGstAsD0Pw+dfy5CTooE5gbAzHg3uDEth94QmJALIS1TZWnZjXBbDL0lMCEfjvyunjWAbgy0kF5xFyHfjKxozAB6tFfeRcg3I11jrd6iRwQCsIehAwMTcjnEy9oRgN1oERaRlTYOvSEwIR+PlDw2Ziq60Y25s0xihwUm5GpITlwlfdVDBHajzJXHhOxDUMyvVPsJABDIBKZijs1XnnYuQs6JdI0ttFSKsSa8wGLGSmNCNrbZwy8GbOkE5g7HJo0J2dj6szLM+YrMo+VMgvKYkGf9MTcAeSFpbTnpMS8zDw9MyGWQqfpq2axVaL3yT6r5hexDljX/+JQcBaaaX8heZF5F1tIrn+lrgVqhSWNCtiPzmrHqrdhlqfpjqvmF7EeW3kUTWM5p5Yee2aQxITuRwa/Ih+3lUc5g2qMoZC/SvQsDEFLpuBEwt640va8UshNZ2aNIj/RYDkKywTo7MDAhV0bKzjG35l0AIKnvkoQ86/O3jkd4ZK72PdINgYPRf9q5CDknUjU2vC0ywOrXIjaWZ4cGJuQyyNo+2If/+ZrTzkWIECFChAgRIuQTkT9sGo+HrOzzfgAAAABJRU5ErkJggg==", "competitors": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAAB90lEQVR4nO2cUY7DMAhEZ1b7T27Q+9/OPgH7AY6TKtKq3Sol3clH1Np5CkgI7DEtHQ9e/etRAhAiRIgQIUKECBHyC8L1WsbXBejkcj9V3xchRRHzuACgE+beMO/r1PmGCfkgZCaxZWSwBbu09ibDhFwc+T4c9c39FW8R8p+RoxizBoAAjsOsrC9CaiIzxmY4dQLwvgCgNdxHWllfhNRGeu4dAcAc5rw5zO+nzjdMyOWRzGO7TNUZd+/0g3JZ1hchNRGkLmEjlGzIFOYxux13d29lfRFSHomgaiA5Py9ZOt9pmJBrIxjpyTODmXubg5HHvG2eVB4T8hRCMnTXCKedBmt+iJxjmJDrI/s1f2eKY1Er94+GjlHYFyE1kYwxWqO1SFk0550GG+OnGibkE5G+ba7IokkydwFd+piQ55CNdmFjwd+wLvXds/UCWvMLeRLZnCV1AuBYjMEaZ32Eaz0m5ElkJ1PMPrFQXNtOklUeE/JH7WJtdnX30C5yajlGzjFMyPWRUSuzDkatbMji6DzoJSvri5DqyNxUdqaw33KzCXP18wt5MRJBRSJ2l22r9l/NFyEFkXEgvjaShUr2fsOEXBI56IP1zhAusnlsHDCNB8r6IqQ2sml25S3FipT34xdwc4NZ3hchtRDqP1WECBEiRIgQIULeivwADYINBXHW0/0AAAAASUVORK5CYII=", "julies": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAACGUlEQVR4nO2cXY7bMAyEh8W+UzfY+x9rbyCdYPog6sdNgEWa1qGzowcblvHBJCCMSIqJEQ+O9utRAhAiRIgQIUKECBHyDWJzFKAZEFcrx1enGybk+shH3L32ux2vvHmV2Bch2ZGlVB65Jsk+s4nYCwwT8oZIM1awwsxY/9tXhPwU5OPurPWd0auNjfK5rwj5ychaY7MY28Mw2yaPddq0vgjJjbTIHQHAaSWisp5mrlfnGybk8kjo2K5UbMZmc/7msCmtL0JSI1EWa2YFVmCfBMAv65MvNEzI9ZGhY816DMZm8GrjcY1WhqCl9UVITiTWmDn3UB+AeZ2P5tV87plpfRGSEwFJkgB6TYxkr4nFJLdwzEmSNa0vQnIi6yzJnF3NIqMcOhaLrJVzDRPyNkjoWGhXBck4S3KGslXAGSImHRPy8FjxGFqBs8sXvM5j8RA3YNT80/oiJCey5ZVOtNITTABo1pdcf3u6YULeBlkxf4wI7HE4DZ+7p/ZKIQ+PO3X+CPtH5I8/CmV5fRGSGtmbXUPBxv4YRwCqjwl5EhlpIwD75N5uHXll05m4kL9DVm9PbxjDiPCjXDYX28g0E/siJCdyp0fRALaCZgQ4jylnvpnXFyGXQWaaeWjmd+p3SUKeRGa1f4Ze/IqWRYz19hLDhFwcGXvlVmU99GA40WwVZs8zTMjbIHbT5vrd0H+qCBEiRIgQIUKE/EvkN6EA599PUwqnAAAAAElFTkSuQmCC", "woodhouse": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAACAElEQVR4nO2cXY7CMAyExyve3Rvs/Y/FDZITzD7E+SlFQsBum7ITIQpNP9WWrLGTGox4cuSvZwlAiBAhQoQIESJEyAPE2lhgC5ANALLZspra3zAh50cucfRUjgYQgNP6e5/a0TAhH4g0pQopc4aaDVOHGCbk5Mhle4qoubIq2Nt3ESJkPbIB4NWajv3JXYT8F6TrWNuMNad5MifycjO1o2FCPgapMXZPskqwbaam9UXInEjE2KhUpR5rVdnmYdO0vgiZGom1JGBmAEgiG5xMEWntgvl9ETIpkq0U+SW6+k5FNngoGdMRhgk5PVJzZV5i09VTlF/OkjHLrixL9tzPMCEfg4AkSQBMIFnFqn4l4YSzjzStL0LmRNBiZ3XWI+qiJHO2kFOMCXkRqXVXiSgARb76w/Fv3iL7GCbk9MiQK2tm7LLmQ6KUjgl5EVnlyqjHan6MC1K8arBN64uQOZFVzd/jiqsww7AEUIwJeQ2JLJmwLf5jaXmQYULOj3Qdi7GVMo80qlwp5C1kKPVDzdYrTTPTPr+QN5Gx2TU+Z0O2eIKZDjNMyAcidcsiKrQEXm0oyU7li5DjkTu91lZarFszv9PKD0ai9XpaX4TMjrSHldHP04qxMqRjQl5E7vTBhmRlg6fWfTFcMK0vQuZEbNPm+mjoP1WECBEiRIgQIUJ+E/kB2ztD/xjlf9EAAAAASUVORK5CYII="};
+const QR = {"gift_card": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAAB8ElEQVR4nO2cYYqEMAyFX5b9H2+w9z/W3KA5QfZHUlt1YHAUR51XBgktH0YISZs+Rhwrh/2sJQAiRIgQIUKECBEiLxAZxwARgYkMiGe/dLxjRO6DqMcIG+peAPX50vGOEbkR0mUqpGGyXLrEtxA5E/K7nHITN4EWqMs+byHyzciTGIu48mrs8RYi34y0GPPOEEC0uA2zpQMdI3I7xPLsiNiMqQOQP58tfcAxIpdHMo/1mSrt2JXNk9hhjhG5DYLsS0Szop8s7TlpYpTTfguRcyIZY2OAZUSpT+z6Y4wRWY/M9/yixbN9McCGnDdxk1o0T/stRM6JtFoJIOtj7eqPz1ZPmceIvIv4QyKiuvMjYAJ1WL2+/IRjRK6PZK0UQAAH3IZmqMd8NPxZK4lsqpW1ULYLce75ieyDoN9rRXSNATaxx8EYI7JutHOlAB4bsHbGzDtxAaDlWMeI3AaZ5qiububQphxjHiOyBVmIXTE2ZmPGC6iDJbKpVtZSmJ0LddEi/XFSqYMlshVpSUw9xPzZGYuOmVHPT2Q/JOQWo7YfwKjz+axjRC6JPNNaAwBES9pRRo36MSLvIU90sLDBa3TFFXmLt+McI3I7pNfB/tX9GOAPgYk/qj72eMeIXB6Rhcz11eB/qhAhQoQIESJEiOyJ/ANVKUIpQ+wjtwAAAABJRU5ErkJggg==", "instaclub": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAAB9klEQVR4nO2cUW7DMAiG/3/aO77B7n+s3sA+AXvAdpym2tR2Wkn181A1Jp9qJASGkNJxp7SPewlAiBAhQoQIESJEyC8IpxSwgOS8Y1X9/8aEvA9iHgLAL3T38CiWneoFGxPyRsgSqUASjWg8qk5hi5BMyOdxieZoxQEedQ/+ihAhe2lEhDK72Tw7lS1CXo9scWzzJ6sEvBU0+pXq/zYm5O2Q1mvHfmnOL4c5y0GV3xYhuZAex66Soo/Tvh9UiW0RkhNB70tY/wQAc5h7vb6tNzFqWluE5ES6j20u5O4VXpf1uG2uyMeE3CnTwbYqcoljuxCnOCbkybpyVJHcVkr/vtSYiW0RkhPBTIhesYtmoYq8WXUeE/IwMuKYVcxQZhUAWqFVmnN4neKYkD8489exuj4id19XFMeEPIz4hRiHfAAx5OPuaIykqdkeIc/kynnOZ+TERl/nLnad2LS2CMmJbLnyqlHWU6ctLTLlSiHP1ZVdbNSY83IUm/IxIU8h+0M+S29ZIPwtpn3KKzYm5I2QOewak2MxZR1DF/vHlyewRUhyZPZdSfYys63zimeyRUhqxHq/YvO3mmNjQk6G3JyDdQC0Gp2L2bhg9P/z2iIkN7IMu8b7ldGSxagxl9ozvS1CciG8+VrIT6L/VBEiRIgQIUKECPlL5BvM3V6xzEj8mQAAAABJRU5ErkJggg==", "free_wash_month": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAAB7UlEQVR4nO2bXY6DMAyEx6t9T27Q+x+rN4hPMPuQf4q0glaU0omqKhA+4Ugj4wzBiI3Nf7YSgBAhQoQIESJEiJB/EGstAsD0Pw+dfy5CTooE5gbAzHg3uDEth94QmJALIS1TZWnZjXBbDL0lMCEfjvyunjWAbgy0kF5xFyHfjKxozAB6tFfeRcg3I11jrd6iRwQCsIehAwMTcjnEy9oRgN1oERaRlTYOvSEwIR+PlDw2Ziq60Y25s0xihwUm5GpITlwlfdVDBHajzJXHhOxDUMyvVPsJABDIBKZijs1XnnYuQs6JdI0ttFSKsSa8wGLGSmNCNrbZwy8GbOkE5g7HJo0J2dj6szLM+YrMo+VMgvKYkGf9MTcAeSFpbTnpMS8zDw9MyGWQqfpq2axVaL3yT6r5hexDljX/+JQcBaaaX8heZF5F1tIrn+lrgVqhSWNCtiPzmrHqrdhlqfpjqvmF7EeW3kUTWM5p5Yee2aQxITuRwa/Ih+3lUc5g2qMoZC/SvQsDEFLpuBEwt640va8UshNZ2aNIj/RYDkKywTo7MDAhV0bKzjG35l0AIKnvkoQ86/O3jkd4ZK72PdINgYPRf9q5CDknUjU2vC0ywOrXIjaWZ4cGJuQyyNo+2If/+ZrTzkWIECFChAgRIuQTkT9sGo+HrOzzfgAAAABJRU5ErkJggg==", "competitors": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAAB90lEQVR4nO2cUY7DMAhEZ1b7T27Q+9/OPgH7AY6TKtKq3Sol3clH1Np5CkgI7DEtHQ9e/etRAhAiRIgQIUKECBHyC8L1WsbXBejkcj9V3xchRRHzuACgE+beMO/r1PmGCfkgZCaxZWSwBbu09ibDhFwc+T4c9c39FW8R8p+RoxizBoAAjsOsrC9CaiIzxmY4dQLwvgCgNdxHWllfhNRGeu4dAcAc5rw5zO+nzjdMyOWRzGO7TNUZd+/0g3JZ1hchNRGkLmEjlGzIFOYxux13d29lfRFSHomgaiA5Py9ZOt9pmJBrIxjpyTODmXubg5HHvG2eVB4T8hRCMnTXCKedBmt+iJxjmJDrI/s1f2eKY1Er94+GjlHYFyE1kYwxWqO1SFk0550GG+OnGibkE5G+ba7IokkydwFd+piQ55CNdmFjwd+wLvXds/UCWvMLeRLZnCV1AuBYjMEaZ32Eaz0m5ElkJ1PMPrFQXNtOklUeE/JH7WJtdnX30C5yajlGzjFMyPWRUSuzDkatbMji6DzoJSvri5DqyNxUdqaw33KzCXP18wt5MRJBRSJ2l22r9l/NFyEFkXEgvjaShUr2fsOEXBI56IP1zhAusnlsHDCNB8r6IqQ2sml25S3FipT34xdwc4NZ3hchtRDqP1WECBEiRIgQIULeivwADYINBXHW0/0AAAAASUVORK5CYII=", "julies": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAACGUlEQVR4nO2cXY7bMAyEh8W+UzfY+x9rbyCdYPog6sdNgEWa1qGzowcblvHBJCCMSIqJEQ+O9utRAhAiRIgQIUKECBHyDWJzFKAZEFcrx1enGybk+shH3L32ux2vvHmV2Bch2ZGlVB65Jsk+s4nYCwwT8oZIM1awwsxY/9tXhPwU5OPurPWd0auNjfK5rwj5ychaY7MY28Mw2yaPddq0vgjJjbTIHQHAaSWisp5mrlfnGybk8kjo2K5UbMZmc/7msCmtL0JSI1EWa2YFVmCfBMAv65MvNEzI9ZGhY816DMZm8GrjcY1WhqCl9UVITiTWmDn3UB+AeZ2P5tV87plpfRGSEwFJkgB6TYxkr4nFJLdwzEmSNa0vQnIi6yzJnF3NIqMcOhaLrJVzDRPyNkjoWGhXBck4S3KGslXAGSImHRPy8FjxGFqBs8sXvM5j8RA3YNT80/oiJCey5ZVOtNITTABo1pdcf3u6YULeBlkxf4wI7HE4DZ+7p/ZKIQ+PO3X+CPtH5I8/CmV5fRGSGtmbXUPBxv4YRwCqjwl5EhlpIwD75N5uHXll05m4kL9DVm9PbxjDiPCjXDYX28g0E/siJCdyp0fRALaCZgQ4jylnvpnXFyGXQWaaeWjmd+p3SUKeRGa1f4Ze/IqWRYz19hLDhFwcGXvlVmU99GA40WwVZs8zTMjbIHbT5vrd0H+qCBEiRIgQIUKE/EvkN6EA599PUwqnAAAAAElFTkSuQmCC", "woodhouse": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAGMAQAAAADhQqjnAAACAElEQVR4nO2cXY7CMAyExyve3Rvs/Y/FDZITzD7E+SlFQsBum7ITIQpNP9WWrLGTGox4cuSvZwlAiBAhQoQIESJEyAPE2lhgC5ANALLZspra3zAh50cucfRUjgYQgNP6e5/a0TAhH4g0pQopc4aaDVOHGCbk5Mhle4qoubIq2Nt3ESJkPbIB4NWajv3JXYT8F6TrWNuMNad5MifycjO1o2FCPgapMXZPskqwbaam9UXInEjE2KhUpR5rVdnmYdO0vgiZGom1JGBmAEgiG5xMEWntgvl9ETIpkq0U+SW6+k5FNngoGdMRhgk5PVJzZV5i09VTlF/OkjHLrixL9tzPMCEfg4AkSQBMIFnFqn4l4YSzjzStL0LmRNBiZ3XWI+qiJHO2kFOMCXkRqXVXiSgARb76w/Fv3iL7GCbk9MiQK2tm7LLmQ6KUjgl5EVnlyqjHan6MC1K8arBN64uQOZFVzd/jiqsww7AEUIwJeQ2JLJmwLf5jaXmQYULOj3Qdi7GVMo80qlwp5C1kKPVDzdYrTTPTPr+QN5Gx2TU+Z0O2eIKZDjNMyAcidcsiKrQEXm0oyU7li5DjkTu91lZarFszv9PKD0ai9XpaX4TMjrSHldHP04qxMqRjQl5E7vTBhmRlg6fWfTFcMK0vQuZEbNPm+mjoP1WECBEiRIgQIUJ+E/kB2ztD/xjlf9EAAAAASUVORK5CYII="};
 
-// ── DEFAULT PROMO DATA ──
 const DEFAULT_PROMOS = [
-  {
-    id: 'p1',
-    name: 'Gift Card First Wash Free',
-    category: 'Promotion',
-    desc: 'Send guest through on the gift card wash value — direct to vacuums after for app setup help.',
-    qualifies: 'Any guest who has purchased a gift card.',
-    when: '1. Select the wash package matching the gift card value purchased.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.\n5. After wash, direct guest to the vacuum area so the greeter can help them add the gift card to their account or app.',
-    notes: 'Select only the wash package matching the gift card value purchased. Do not use for any other wash package.',
-    expiry: '',
-    qr: DEMO_QRS['gift_card'],
-    active: true
-  },
-  {
-    id: 'p2',
-    name: 'Instaclub 2.0 — First Month Included with Works Purchase',
-    category: 'New Member',
-    desc: 'Discounts the first month of Works Club to the price of a single Works wash.',
-    qualifies: 'New members only.',
-    when: '1. Select the Works Club.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.',
-    notes: 'For new members only. If the phone number given is already in the system, this deal is not available. Do not ask for a different number.',
-    expiry: '',
-    qr: DEMO_QRS['instaclub'],
-    active: true
-  },
-  {
-    id: 'p3',
-    name: 'Free Wash Free Month',
-    category: 'New Member',
-    desc: 'Free first month for a new member presenting a free wash coupon.',
-    qualifies: 'New members with a free wash coupon.',
-    when: '1. Select the Works Club.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.',
-    notes: 'For new members only. If the phone number given is already in the system, this deal is not available. Do not ask for a different number.',
-    expiry: '',
-    qr: DEMO_QRS['free_wash_month'],
-    active: true
-  },
-  {
-    id: 'p4',
-    name: 'Competitors Coupons',
-    category: 'Manager Approval Only',
-    desc: 'Use when a guest brings a coupon for a competitor's car wash.',
-    qualifies: 'Any guest with a valid coupon for a free wash at another car wash.',
-    when: '1. Select the Works Wash.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.',
-    notes: 'Coupon must still be valid. Collect the coupon from the guest when redeeming.',
-    expiry: '',
-    qr: DEMO_QRS['competitors'],
-    active: true
-  },
-  {
-    id: 'p5',
-    name: "Julie's Free Wash Code",
-    category: 'Manager Approval Only',
-    desc: 'Send guest through for a wash when picking up a donation or fundraising info.',
-    qualifies: 'Any guest identified by Julie to receive a free wash.',
-    when: '1. Select the Works Wash.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.',
-    notes: '',
-    expiry: '',
-    qr: DEMO_QRS['julies'],
-    active: true
-  },
-  {
-    id: 'p6',
-    name: 'Woodhouse Free Wash',
-    category: 'Promotion',
-    desc: 'Free Works Wash for guests presenting a Woodhouse coupon.',
-    qualifies: 'Any guest with a valid Woodhouse coupon.',
-    when: '1. Select the Works Wash.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.\n5. Collect the coupon and place in the drawer.',
-    notes: 'Coupon must be present at time of redemption. Collect it from the guest and place in the drawer.',
-    expiry: '',
-    qr: DEMO_QRS['woodhouse'],
-    active: true
-  },
+  { id:'p1', name:'Gift Card First Wash Free', category:'Promotion', desc:'Send guest through on the gift card wash value — direct to vacuums after for app setup help.', qualifies:'Any guest who has purchased a gift card.', when:'1. Select the wash package matching the gift card value purchased.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.\n5. After wash, direct guest to the vacuum area so the greeter can help them add the gift card to their account or app.', notes:'Select only the wash package matching the gift card value purchased. Do not use for any other wash package.', expiry:'', qr:QR.gift_card, active:true },
+  { id:'p2', name:'Instaclub 2.0 — First Month with Works', category:'New Member', desc:'Discounts the first month of Works Club to the price of a single Works wash.', qualifies:'New members only.', when:'1. Select the Works Club.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.', notes:'For new members only. If the phone number given is already in the system, this deal is not available. Do not ask for a different number.', expiry:'', qr:QR.instaclub, active:true },
+  { id:'p3', name:'Free Wash Free Month', category:'New Member', desc:'Free first month for a new member presenting a free wash coupon.', qualifies:'New members with a free wash coupon.', when:'1. Select the Works Club.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.', notes:'For new members only. If the phone number given is already in the system, this deal is not available. Do not ask for a different number.', expiry:'', qr:QR.free_wash_month, active:true },
+  { id:'p4', name:'Competitors Coupons', category:'Manager Approval Only', desc:"Use when a guest brings a coupon for a competitor's car wash.", qualifies:'Any guest with a valid coupon for a free wash at another car wash.', when:'1. Select the Works Wash.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.', notes:'Coupon must still be valid. Collect the coupon from the guest when redeeming.', expiry:'', qr:QR.competitors, active:true },
+  { id:'p5', name:"Julie's Free Wash Code", category:'Manager Approval Only', desc:'Send guest through for a wash when picking up a donation or fundraising info.', qualifies:'Any guest identified by Julie to receive a free wash.', when:'1. Select the Works Wash.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.', notes:'', expiry:'', qr:QR.julies, active:true },
+  { id:'p6', name:'Woodhouse Free Wash', category:'Promotion', desc:'Free Works Wash for guests presenting a Woodhouse coupon.', qualifies:'Any guest with a valid Woodhouse coupon.', when:'1. Select the Works Wash.\n2. Select the QR Code Scanner on the POS.\n3. Scan QR Code on POS.\n4. Complete transaction.\n5. Collect the coupon and place in the drawer.', notes:'Coupon must be present. Collect it from the guest and place in the drawer.', expiry:'', qr:QR.woodhouse, active:true },
 ];
 
-// ── STATE ──
-let promos = [];
-let editingId = null;
+let promos = JSON.parse(JSON.stringify(DEFAULT_PROMOS));
 let activeFilter = 'All';
+let editingId = null;
 
-function loadPromos() {
-  try {
-    const stored = localStorage.getItem('promoqr_promos');
-    promos = stored ? JSON.parse(stored) : JSON.parse(JSON.stringify(DEFAULT_PROMOS));
-  } catch(e) {
-    promos = JSON.parse(JSON.stringify(DEFAULT_PROMOS));
-  }
-}
+try {
+  const stored = localStorage.getItem('promoqr_promos');
+  if (stored) promos = JSON.parse(stored);
+} catch(e) {}
 
-function savePromos() {
-  try { localStorage.setItem('promoqr_promos', JSON.stringify(promos)); } catch(e) {}
-}
+function savePromos() { try { localStorage.setItem('promoqr_promos', JSON.stringify(promos)); } catch(e) {} }
 
-// ── VIEWS ──
+function isExpired(e) { return e && new Date(e) < new Date(new Date().toDateString()); }
+function formatExpiry(e) { if (!e) return 'No expiration'; return new Date(e+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}); }
+function daysUntil(e) { if (!e) return 9999; return Math.ceil((new Date(e) - new Date(new Date().toDateString())) / 86400000); }
+function catClass(c) { return CATEGORY_CLASS[c] || ''; }
+
 function showHome() {
   document.getElementById('homeView').style.display = '';
   document.getElementById('detailView').classList.remove('active');
@@ -920,106 +306,72 @@ function showAdmin() {
 function showDetail(id) {
   const p = promos.find(x => x.id === id);
   if (!p) return;
-
   document.getElementById('homeView').style.display = 'none';
-
-  const catClass = CATEGORY_CLASS[p.category] || '';
-  document.getElementById('detailHeader').style.background =
-    catClass === 'manager-only' ? '#111' :
-    catClass === 'fundraiser' ? '#1a5fa8' :
-    catClass === 'community' ? '#2e7d32' :
-    catClass === 'winback' ? '#e65100' : 'var(--red)';
-
+  const cc = catClass(p.category);
+  document.getElementById('detailHeader').className = 'detail-header' + (cc ? ' ' + cc : '');
   document.getElementById('detailCategory').textContent = p.category;
   document.getElementById('detailTitle').textContent = p.name;
   document.getElementById('detailQualifies').textContent = p.qualifies || '—';
-  document.getElementById('detailWhen').style.whiteSpace = 'pre-line';
   document.getElementById('detailWhen').textContent = p.when || '—';
   document.getElementById('detailExpiry').textContent = formatExpiry(p.expiry);
-
-  const notesEl = document.getElementById('detailNotes');
   const noteRow = document.getElementById('noteRow');
   const noteDivider = document.getElementById('noteDivider');
   if (p.notes) {
-    notesEl.textContent = p.notes;
+    document.getElementById('detailNotes').textContent = p.notes;
     noteRow.style.display = '';
     noteDivider.style.display = '';
   } else {
     noteRow.style.display = 'none';
     noteDivider.style.display = 'none';
   }
-
-  const qrImg = document.getElementById('detailQR');
-  qrImg.src = p.qr || '';
-  qrImg.alt = p.name + ' QR Code';
-
+  document.getElementById('detailQR').src = p.qr || '';
   document.getElementById('detailQRCaption').textContent = p.name;
   document.getElementById('detailView').classList.add('active');
   window.scrollTo(0, 0);
 }
 
-// ── RENDER HOME ──
 function renderHome() {
-  const activePromos = promos.filter(p => p.active && !isExpired(p.expiry));
-  const categories = ['All', ...new Set(activePromos.map(p => p.category))];
-
-  // Filter pills
-  const filterBar = document.getElementById('filterBar');
-  filterBar.innerHTML = categories.map(cat =>
-    `<button class="filter-pill ${cat === activeFilter ? 'active' : ''}" onclick="setFilter('${cat}')">${cat}</button>`
+  const active = promos.filter(p => p.active && !isExpired(p.expiry));
+  const cats = ['All', ...new Set(active.map(p => p.category))];
+  document.getElementById('activeBadge').textContent = active.length + ' Active';
+  document.getElementById('filterBar').innerHTML = cats.map(c =>
+    `<button class="filter-pill${c === activeFilter ? ' active' : ''}" onclick="setFilter('${c}')">${c}</button>`
   ).join('');
-
-  // Badge
-  document.getElementById('activeBadge').textContent = activePromos.length + ' Active';
-
-  // Grid
-  const filtered = activeFilter === 'All' ? activePromos : activePromos.filter(p => p.category === activeFilter);
-  const grid = document.getElementById('promoGrid');
-
-  if (filtered.length === 0) {
-    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><p>No active promotions in this category.</p></div>`;
+  const list = activeFilter === 'All' ? active : active.filter(p => p.category === activeFilter);
+  if (list.length === 0) {
+    document.getElementById('promoGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--gray-500);font-size:18px">No active promotions in this category.</div>';
     return;
   }
-
-  grid.innerHTML = filtered.map(p => {
-    const catClass = CATEGORY_CLASS[p.category] || '';
-    const expiryText = formatExpiry(p.expiry);
-    const expiryClass = daysUntil(p.expiry) <= 14 ? 'soon' : '';
-    return `
-    <div class="promo-card ${catClass}" onclick="showDetail('${p.id}')">
+  document.getElementById('promoGrid').innerHTML = list.map(p => {
+    const cc = catClass(p.category);
+    const expiryClass = daysUntil(p.expiry) <= 14 ? ' soon' : '';
+    return `<div class="promo-card${cc ? ' '+cc : ''}" onclick="showDetail('${p.id}')">
       <div class="card-category">${p.category}</div>
       <div class="card-name">${p.name}</div>
-      <div class="card-desc">${p.desc || ''}</div>
+      <div class="card-desc">${p.desc}</div>
       <div class="card-footer">
-        <div class="card-expiry ${expiryClass}">Expires ${expiryText}</div>
+        <div class="card-expiry${expiryClass}">Expires ${formatExpiry(p.expiry)}</div>
         <div class="card-arrow">›</div>
       </div>
     </div>`;
   }).join('');
 }
 
-function setFilter(cat) {
-  activeFilter = cat;
-  renderHome();
-}
+function setFilter(cat) { activeFilter = cat; renderHome(); }
 
-// ── RENDER ADMIN ──
 function renderAdmin() {
   const active = promos.filter(p => p.active && !isExpired(p.expiry));
   const inactive = promos.filter(p => !p.active || isExpired(p.expiry));
-
-  document.getElementById('adminTable').innerHTML = active.length === 0
-    ? '<div class="admin-row"><div class="admin-row-info" style="color:var(--gray-500)">No active promos</div></div>'
-    : active.map(p => adminRow(p)).join('');
-
-  document.getElementById('adminTableInactive').innerHTML = inactive.length === 0
-    ? '<div class="admin-row"><div class="admin-row-info" style="color:var(--gray-500)">None</div></div>'
-    : inactive.map(p => adminRow(p)).join('');
+  document.getElementById('adminTable').innerHTML = active.length
+    ? active.map(adminRow).join('')
+    : '<div class="admin-row"><div class="admin-row-info" style="color:var(--gray-500)">No active promos</div></div>';
+  document.getElementById('adminTableInactive').innerHTML = inactive.length
+    ? inactive.map(adminRow).join('')
+    : '<div class="admin-row"><div class="admin-row-info" style="color:var(--gray-500)">None</div></div>';
 }
 
 function adminRow(p) {
-  return `
-  <div class="admin-row">
+  return `<div class="admin-row">
     <div class="status-dot ${p.active && !isExpired(p.expiry) ? 'active' : 'inactive'}"></div>
     <div class="admin-row-info">
       <div class="admin-row-name">${p.name}</div>
@@ -1033,12 +385,9 @@ function adminRow(p) {
   </div>`;
 }
 
-// ── MODAL ──
 function openModal(id) {
   editingId = id || null;
-  const modal = document.getElementById('modalOverlay');
   const p = id ? promos.find(x => x.id === id) : null;
-
   document.getElementById('modalTitle').textContent = p ? 'Edit Promo' : 'Add Promo';
   document.getElementById('f_name').value = p ? p.name : '';
   document.getElementById('f_category').value = p ? p.category : 'New Member';
@@ -1050,37 +399,26 @@ function openModal(id) {
   document.getElementById('f_expiry').value = p ? p.expiry : '';
   document.getElementById('f_qr_url').value = '';
   document.getElementById('f_qr_file').value = '';
-
-  modal.classList.add('active');
+  document.getElementById('modalOverlay').classList.add('active');
 }
 
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('active');
-  editingId = null;
-}
-
-function closeModalOnOverlay(e) {
-  if (e.target === document.getElementById('modalOverlay')) closeModal();
-}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('active'); editingId = null; }
+function closeModalOnOverlay(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
 
 async function savePromo() {
   const name = document.getElementById('f_name').value.trim();
   if (!name) { showToast('Please enter a promo name'); return; }
-
   const fileInput = document.getElementById('f_qr_file');
   const urlInput = document.getElementById('f_qr_url').value.trim();
-
   let qrData = null;
-
   if (fileInput.files && fileInput.files[0]) {
     qrData = await readFile(fileInput.files[0]);
   } else if (urlInput) {
-    // Use QR Server API to generate a QR code from the URL
-    qrData = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&data=${encodeURIComponent(urlInput)}`;
+    qrData = urlInput.startsWith('http')
+      ? `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&data=${encodeURIComponent(urlInput)}`
+      : urlInput;
   }
-
   const existing = editingId ? promos.find(x => x.id === editingId) : null;
-
   const promo = {
     id: editingId || 'p' + Date.now(),
     name,
@@ -1093,81 +431,29 @@ async function savePromo() {
     expiry: document.getElementById('f_expiry').value,
     qr: qrData || (existing ? existing.qr : ''),
   };
-
-  if (editingId) {
-    const idx = promos.findIndex(x => x.id === editingId);
-    promos[idx] = promo;
-  } else {
-    promos.push(promo);
-  }
-
-  savePromos();
-  closeModal();
-  renderAdmin();
-  showToast(editingId ? 'Promo updated ✓' : 'Promo added ✓');
+  if (editingId) { const i = promos.findIndex(x => x.id === editingId); promos[i] = promo; }
+  else promos.push(promo);
+  savePromos(); closeModal(); renderAdmin(); showToast(editingId ? 'Promo updated ✓' : 'Promo added ✓');
 }
 
-function readFile(file) {
-  return new Promise((res, rej) => {
-    const r = new FileReader();
-    r.onload = () => res(r.result);
-    r.onerror = rej;
-    r.readAsDataURL(file);
-  });
-}
+function readFile(file) { return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result); r.onerror = rej; r.readAsDataURL(file); }); }
+function toggleActive(id) { const p = promos.find(x => x.id === id); if (p) { p.active = !p.active; savePromos(); renderAdmin(); showToast(p.active ? 'Activated ✓' : 'Deactivated ✓'); } }
+function deletePromo(id) { if (!confirm('Delete this promo? This cannot be undone.')) return; promos = promos.filter(x => x.id !== id); savePromos(); renderAdmin(); showToast('Promo deleted'); }
+function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500); }
 
-function toggleActive(id) {
-  const p = promos.find(x => x.id === id);
-  if (p) { p.active = !p.active; savePromos(); renderAdmin(); showToast(p.active ? 'Activated ✓' : 'Deactivated ✓'); }
-}
-
-function deletePromo(id) {
-  if (!confirm('Delete this promo? This cannot be undone.')) return;
-  promos = promos.filter(x => x.id !== id);
-  savePromos();
-  renderAdmin();
-  showToast('Promo deleted');
-}
-
-// ── HELPERS ──
-function isExpired(expiry) {
-  if (!expiry) return false;
-  return new Date(expiry) < new Date(new Date().toDateString());
-}
-
-function daysUntil(expiry) {
-  if (!expiry) return 9999;
-  const diff = new Date(expiry) - new Date(new Date().toDateString());
-  return Math.ceil(diff / (1000 * 60 * 60 * 24));
-}
-
-function formatExpiry(expiry) {
-  if (!expiry) return 'No expiration';
-  const d = new Date(expiry + 'T00:00:00');
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
-}
-
-// ── INSTALL BANNER ──
 function checkInstall() {
-  const isStandalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
-  if (!isStandalone) {
-    let dismissed = false; try { dismissed = localStorage.getItem('installBannerDismissed'); } catch(e) {}
-    if (!dismissed) document.getElementById('installBanner').style.display = 'flex';
-  }
-  document.getElementById('installBanner').querySelector('button').addEventListener('click', () => {
-    try { localStorage.setItem('installBannerDismissed', '1'); } catch(e) {}
-  });
+  try {
+    const isStandalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+    if (!isStandalone) {
+      const dismissed = localStorage.getItem('installBannerDismissed');
+      if (!dismissed) document.getElementById('installBanner').style.display = 'flex';
+    }
+    document.getElementById('installBanner').querySelector('button').addEventListener('click', () => {
+      try { localStorage.setItem('installBannerDismissed', '1'); } catch(e) {}
+    });
+  } catch(e) {}
 }
 
-// ── INIT ──
-try { loadPromos(); } catch(e) { promos = JSON.parse(JSON.stringify(DEFAULT_PROMOS)); }
 showHome();
 try { checkInstall(); } catch(e) {}
 </script>
